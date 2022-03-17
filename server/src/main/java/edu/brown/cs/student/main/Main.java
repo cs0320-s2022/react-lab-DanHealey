@@ -92,24 +92,7 @@ public final class Main {
     Spark.post("/horoscope", new HoroscopeHandler());
   }
 
-  /**
-   * Display an error page when an exception occurs in the server.
-   *
-   * @author jj
-   */
-  private static class ExceptionPrinter implements ExceptionHandler {
-    @Override
-    public void handle(Exception e, Request req, Response res) {
-      res.status(500);
-      StringWriter stacktrace = new StringWriter();
-      try (PrintWriter pw = new PrintWriter(stacktrace)) {
-        pw.println("<pre>");
-        e.printStackTrace(pw);
-        pw.println("</pre>");
-      }
-      res.body(stacktrace.toString());
-    }
-  }
+
 
   /**
    * Handles requests made for a horoscope.
